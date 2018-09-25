@@ -1,17 +1,17 @@
 import _ from 'lodash';
-import './index.css';
-import dz from './dz.gif';
+import printMe from './print';
 
 function comp() {
   let ele = document.createElement('h2');
-  ele.innerHTML = _.join(['Hello', 'webpack!'], ' ');
-  // 新增样式
-  ele.classList.add('hello');
+  let btn = document.createElement('button');
 
-  // 添加图片文件
-  let dzImg = new Image();
-  dzImg.src = dz;
-  ele.appendChild(dzImg);
+  ele.innerHTML = _.join(['Hello', 'webpack!'], ' ');
+
+  btn.innerHTML = 'Click me and check the console!';
+  btn.onclick = printMe;
+
+  ele.appendChild(btn);
+
   return ele;
 }
 
