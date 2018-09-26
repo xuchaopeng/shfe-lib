@@ -2,20 +2,32 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const myresolve = p => {
+  return path.resolve(__dirname, p);
+};
+const BUNDLE_PATH = myresolve('../dist');
+
 module.exports = {
-  mode: 'development',
   entry: {
-    print: path.resolve(__dirname, '../src/print.js'),
-    index: path.resolve(__dirname, '../src/index.js')
+    print: myresolve('../src/print.js'),
+    index: myresolve('../src/index.js')
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
-    filename: '[name].bundle.js'
+    path: BUNDLE_PATH,
+    filename: '[name].bundle.js',
+    publicPath: myresolve('/')
+  },
+  mode: 'development',
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: BUNDLE_PATH,
+    // useLocalIp: true,
+    watchContentBase: true,
+    port: 8888
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin([BUNDLE_PATH]),
     new HtmlWebpackPlugin({
-      title: 'Output Management',
       filename: 'index.html',
       template: 'src/index.html'
     })
