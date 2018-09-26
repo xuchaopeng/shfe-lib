@@ -9,10 +9,12 @@ const myresolve = p => {
 const BUNDLE_PATH = myresolve('../dist');
 
 module.exports = {
-  entry: ['webpack-hot-middleware/client', myresolve('../src/index.js')],
+  entry: {
+    index: myresolve('../src/index.js')
+  },
   output: {
     path: BUNDLE_PATH,
-    filename: 'index.bundle.js',
+    filename: '[name].bundle.js',
     publicPath: myresolve('/')
   },
   mode: 'development',
