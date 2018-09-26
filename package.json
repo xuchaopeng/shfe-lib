@@ -4,10 +4,8 @@
   "description": "webpack从入门到深入",
   "main": "src/index.js",
   "scripts": {
-    "build": "webpack --config build/webpack.config.js",
-    "watch": "webpack --config build/webpack.config.js --watch",
-    "start": "webpack-dev-server --config build/webpack.config.js --open",
-    "server": "node build/server.js"
+    "build": "webpack --config build/webpack.prod.js",
+    "start": "webpack-dev-server --open --config build/webpack.dev.js"
   },
   "repository": {
     "type": "git",
@@ -34,7 +32,8 @@
     "webpack-cli": "^3.1.1",
     "webpack-dev-middleware": "^3.4.0",
     "webpack-dev-server": "^3.1.9",
-    "webpack-hot-middleware": "^2.24.2"
+    "webpack-hot-middleware": "^2.24.2",
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {
     "lodash": "^4.17.11"
