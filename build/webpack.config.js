@@ -19,13 +19,13 @@ module.exports = {
   },
   mode: 'development',
   devtool: 'inline-source-map',
-  // devServer: {
-  //   contentBase: BUNDLE_PATH,
-  //   // useLocalIp: true,
-  //   // watchContentBase: true,
-  //   hot: true,
-  //   port: 8888
-  // },
+  devServer: {
+    contentBase: BUNDLE_PATH,
+    // useLocalIp: true,
+    // watchContentBase: true,
+    hot: true,
+    port: 8888
+  },
   module: {
     rules: [
       {
