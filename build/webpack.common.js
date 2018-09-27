@@ -8,11 +8,17 @@ const myresolve = p => {
 
 module.exports = {
   entry: {
-    app: myresolve('../src/index.js')
+    app: myresolve('../src/index.js'),
+    another: myresolve('../src/another_module.js')
   },
   output: {
     filename: '[name].bundle.js',
     path: myresolve('../dist')
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
   },
   module: {
     rules: [
