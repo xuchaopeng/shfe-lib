@@ -11,9 +11,22 @@ module.exports = {
     app: myresolve('../src/index.js')
   },
   output: {
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
-    path: myresolve('../dist')
+    filename: '[name].[contenthash].js',
+    // chunkFilename: '[name].[contenthash].js',
+    path: myresolve('../dist/static'),
+    publicPath: './static/'
+  },
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
   },
   module: {
     rules: [
@@ -24,7 +37,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin([myresolve('../dist')]),
+    new CleanWebpackPlugin([myresolve('../dist')], {
+      root: path.join(__dirname, '..')
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/index.html'

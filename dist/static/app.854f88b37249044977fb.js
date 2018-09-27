@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],[function(e,n,t){"use strict";t.r(n);t(1);document.getElementById("root").appendChild(function(){let e=document.createElement("div"),n=document.createElement("button"),o=document.createElement("br");return n.innerHTML="Click me and look at the console!!!",e.appendChild(o),e.appendChild(n),n.onclick=(e=>t.e(1).then(t.bind(null,4)).then(e=>{console.log("print mod: ",e),(0,e.default)()})),e}())}],[[0,3,2]]]);
+//# sourceMappingURL=app.854f88b37249044977fb.js.map

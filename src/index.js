@@ -12,7 +12,7 @@ function component() {
   let button = document.createElement('button');
   let br = document.createElement('br');
 
-  button.innerHTML = 'Click me and look at the console!';
+  button.innerHTML = 'Click me and look at the console!!!';
 
   element.appendChild(br);
   element.appendChild(button);
