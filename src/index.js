@@ -1,5 +1,5 @@
 import _ from 'lodash';
-// import printMe from './print';
+import Print from './print';
 // import './index.css';
 // import { cube } from './math';
 
@@ -12,18 +12,19 @@ function component() {
   let button = document.createElement('button');
   let br = document.createElement('br');
 
-  button.innerHTML = 'Click me and look at the console!!!';
+  button.innerHTML = 'Click me and look at the console!';
 
   element.appendChild(br);
   element.appendChild(button);
 
-  button.onclick = e =>
-    import(/* webpackChunkName: "print" */ './print').then(mod => {
-      console.log('print mod: ', mod);
+  // button.onclick = e =>
+  //   import(/* webpackChunkName: "print" */ './print').then(mod => {
+  //     console.log('print mod: ', mod);
 
-      let print = mod.default;
-      print();
-    });
+  //     let print = mod.default;
+  //     print();
+  //   });
+  button.onclick = Print.bind(null, 'Hello webpack!');
 
   return element;
 }

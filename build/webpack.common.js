@@ -11,13 +11,15 @@ module.exports = {
     app: myresolve('../src/index.js')
   },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[name].[contenthash:6].js',
     // chunkFilename: '[name].[contenthash].js',
-    path: myresolve('../dist/static'),
-    publicPath: './static/'
+    path: myresolve('../dist/static/js'),
+    publicPath: './static/js/'
   },
   optimization: {
-    runtimeChunk: 'single',
+    runtimeChunk: {
+      name: 'manifest'
+    },
     splitChunks: {
       cacheGroups: {
         vendor: {
@@ -41,7 +43,7 @@ module.exports = {
       root: path.join(__dirname, '..')
     }),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
+      filename: '../index.html',
       template: 'src/index.html'
     })
   ]
