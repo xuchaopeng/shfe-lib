@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -45,6 +46,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: '../index.html',
       template: 'src/index.html'
+    }),
+    new webpack.ProvidePlugin({
+      // _: 'lodash'
+      join: ['lodash', 'join']
     })
   ]
 };

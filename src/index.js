@@ -1,4 +1,4 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import Print from './print';
 // import './index.css';
 // import { cube } from './math';
@@ -11,9 +11,13 @@ function component() {
   let element = document.createElement('div');
   let button = document.createElement('button');
   let br = document.createElement('br');
+  let h2 = document.createElement('h2');
+
+  h2.innerText = join(['Hello', 'webpack!!!!'], ' ');
 
   button.innerHTML = 'Click me and look at the console!';
 
+  element.appendChild(h2);
   element.appendChild(br);
   element.appendChild(button);
 
