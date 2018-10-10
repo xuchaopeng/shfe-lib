@@ -1,5 +1,5 @@
 // import _ from 'lodash';
-import Print from './print';
+import Print from './js/print';
 // import './index.css';
 // import { cube } from './math';
 
