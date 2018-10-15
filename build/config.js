@@ -12,7 +12,7 @@ module.exports = {
   },
   dev: {
     assetsRoot: myresolve('../dist'),
-    assetsPublicPath: './',
+    assetsPublicPath: '/',
     assetsSubPath: './static'
   },
   build: {

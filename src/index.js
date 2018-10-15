@@ -1,11 +1,8 @@
-// import { square, cube } from "./js/math";
+import $ from 'zepto-webpack';
 
-function jq(selector) {
-  return document.querySelectorAll(selector);
-}
+var $clickme = $('#clickme');
+var $txt = $('#txt');
 
-var clickme = jq('#clickme');
-var txt = jq('#txt');
-clickme.onclick = function() {
-  txt.style.display = 'none';
-};
+$clickme.on('click', function() {
+  $txt.hide();
+});

@@ -5,6 +5,9 @@ const commonConfig = require('./webpack.common');
 
 module.exports = merge(commonConfig, {
   mode: 'development',
+  output: {
+    publicPath: config.dev.assetsPublicPath
+  },
   devtool: 'inline-source-map',
   devServer: {
     contentBase: config.dev.assetsRoot
