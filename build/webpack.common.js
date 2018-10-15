@@ -1,21 +1,25 @@
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const config = require('./config');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const myresolve = p => {
-  return path.resolve(__dirname, p);
-};
+// const IS_DEV = process.env.NODE_ENV === 'development';
 
 module.exports = {
   entry: {
-    app: myresolve('../src/index.js')
+    app: config.common.entry
   },
   output: {
-    filename: '[name].[contenthash:6].js',
-    // chunkFilename: '[name].[contenthash].js',
-    path: myresolve('../dist/static/js'),
-    publicPath: './static/js/'
+    filename: path.posix.join(
+      config.common.assetsSubPath,
+      '/js/[name].[contenthash:6].js'
+    ),
+    chunkFilename: path.posix.join(
+      config.common.assetsSubPath,
+      '/js/[name].[contenthash:6].js'
+    ),
+    path: config.common.assetsRoot,
+    publicPath: config.common.assetsPublicPath
   },
   optimization: {
     runtimeChunk: {
@@ -40,16 +44,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin([myresolve('../dist')], {
-      root: path.join(__dirname, '..')
-    }),
     new HtmlWebpackPlugin({
-      filename: '../index.html',
+      filename: 'index.html',
       template: 'src/index.html'
-    }),
-    new webpack.ProvidePlugin({
-      // _: 'lodash'
-      join: ['lodash', 'join']
     })
   ]
 };

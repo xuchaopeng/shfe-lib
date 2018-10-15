@@ -1,13 +1,13 @@
-const webpack = require('webpack');
+// const webpack = require('webpack');
+const config = require('./config');
 const merge = require('webpack-merge');
-const common = require('./webpack.common');
-const path = require('path');
+const commonConfig = require('./webpack.common');
 
-module.exports = merge(common, {
+module.exports = merge(commonConfig, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.resolve(__dirname, '../dist')
+    contentBase: config.dev.assetsRoot
     // hot: true
     // open: true
   }

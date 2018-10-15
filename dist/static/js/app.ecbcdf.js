@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{tjUo:function(n,o){function c(n){return document.querySelectorAll(n)}var t=c("#clickme"),e=c("#txt");t.onclick=function(){e.style.display="none"}}},[["tjUo",1]]]);
+//# sourceMappingURL=app.ecbcdf.js.map

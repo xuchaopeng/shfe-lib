@@ -1,9 +1,17 @@
+const config = require('./config');
+const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const common = require('./webpack.common');
+const commonConfig = require('./webpack.common');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-module.exports = merge(common, {
+module.exports = merge(commonConfig, {
   mode: 'production',
   devtool: 'source-map',
-  plugins: [new webpack.HashedModuleIdsPlugin()]
+  plugins: [
+    new CleanWebpackPlugin([config.build.assetsRoot], {
+      root: path.join(__dirname, '..')
+    }),
+    new webpack.HashedModuleIdsPlugin()
+  ]
 });
