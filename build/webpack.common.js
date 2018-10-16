@@ -1,13 +1,14 @@
 // const webpack = require('webpack');
 const path = require('path');
 const config = require('./config');
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const DashboardPlugin = require('webpack-dashboard/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const IS_DEV = process.env.NODE_ENV === 'development';
 
 module.exports = {
   entry: {
-    app: config.common.entry
+    index: config.common.entry
   },
   output: {
     filename: path.posix.join(
@@ -39,7 +40,8 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        // use: ['style-loader', 'css-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
       }
     ]
   },
@@ -47,6 +49,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: config.common.assetsSubPath + '/css/[name].[contenthash:6].css',
+      chunkFilename:
+        config.common.assetsSubPath + '/css/[id].[contenthash:6].css'
     })
+    // new DashboardPlugin()
   ]
 };

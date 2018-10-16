@@ -5,7 +5,7 @@ const myresolve = p => {
 
 module.exports = {
   common: {
-    entry: myresolve('../src/index.js'),
+    entry: myresolve('../src/js/index.js'),
     assetsRoot: myresolve('../dist'),
     assetsPublicPath: './',
     assetsSubPath: './static'
