@@ -5,8 +5,7 @@ const config = require('./config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const IS_DEV = process.env.NODE_ENV === 'development';
-
-module.exports = {
+const webpackConfig = {
   entry: {
     index: config.common.entry
   },
@@ -39,6 +38,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+      {
         test: /\.css$/,
         // use: ['style-loader', 'css-loader']
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
@@ -53,8 +59,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: config.common.assetsSubPath + '/css/[name].[contenthash:6].css',
       chunkFilename:
-        config.common.assetsSubPath + '/css/[id].[contenthash:6].css'
+        config.common.assetsSubPath + '/css/[name].[contenthash:6].css'
     })
     // new DashboardPlugin()
   ]
 };
+module.exports = webpackConfig;

@@ -8,16 +8,16 @@ module.exports = {
     entry: myresolve('../src/js/index.js'),
     assetsRoot: myresolve('../dist'),
     assetsPublicPath: './',
-    assetsSubPath: './static'
+    assetsSubPath: 'static'
   },
   dev: {
     assetsRoot: myresolve('../dist'),
-    assetsPublicPath: '/',
-    assetsSubPath: './static'
+    assetsPublicPath: './',
+    assetsSubPath: 'static'
   },
   build: {
     assetsRoot: myresolve('../dist'),
     assetsPublicPath: './',
-    assetsSubPath: './static'
+    assetsSubPath: 'static'
   }
 };

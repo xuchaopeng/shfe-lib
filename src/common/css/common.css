@@ -83,8 +83,7 @@ textarea::-webkit-input-placeholder {
 .dotdot {
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  display: box;
+  display: flex;
   -webkit-box-orient: vertical;
 }
 .line1 {
