@@ -1,7 +1,13 @@
+/**
+ *
+ */
+@charset "utf-8";
+
 @import '../common/css/base.css';
 @import '../common/css/common.css';
 
 :root {
+  --title-color: #0000ff;
   --btn-color: bisque;
   --body-bg-color: #ff0;
   --my-padding: 5px 10px;
@@ -29,6 +35,45 @@ button {
 }
 
 #txt {
+  display: none;
   color: var(--txt-main-color);
   padding: var(--my-padding);
+}
+
+.title {
+  color: var(--title-color);
+  margin: 10px;
+}
+
+.img {
+  display: inline-block;
+  width: 250px;
+}
+
+.img > img {
+  width: 100%;
+}
+
+.title-bgimg {
+  --wh: 200px;
+  width: var(--wh);
+  height: var(--wh);
+  color: #ff0;
+  background-image: url('../img/webpack.jpeg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.box {
+  display: flex;
+  width: 100px;
+  height: 20px;
+  justify-content: space-between;
+}
+
+.box > .dot {
+  --wh: 20px;
+  width: var(--wh);
+  height: var(--wh);
+  background-color: red;
 }

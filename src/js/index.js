@@ -2,6 +2,7 @@ import '../css/index.css';
 import $ from 'zepto-webpack';
 import { square, cube } from './math';
 import print from './print';
+import Api from '../api';
 
 const $clickme = $('#clickme');
 const $txt = $('#txt');
@@ -22,3 +23,9 @@ $square.on('click', () => {
 $cube.on('click', () => {
   $result.text(cube($input.val()));
 });
+
+console.log('==================检查环境====================');
+console.log('环境不同，结果不同：', Api.Data.getData());
+
+console.log('===================检查日志===================');
+console.log('发送日志了吗？', Api.Log.sendLog());

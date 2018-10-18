@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{ENlo:function(n,t,c){},e6Wu:function(n,t,c){"use strict";c.r(t);c("ENlo");var o=c("r7DH"),i=c.n(o);var u=i()("#clickme"),e=i()("#txt");u.on("click",function(){e.hide(),function(n){console.log(n)}("txt is hidden!")});var r=i()("#J_input"),l=i()("#J_result"),s=i()("#J_square"),a=i()("#J_cube");s.on("click",function(){l.text(function(n){return n*n}(r.val()))}),a.on("click",function(){l.text(function(n){return n*n*n}(r.val()))})}},[["e6Wu",2,1]]]);
-//# sourceMappingURL=index.d3cf22.js.map

@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "builda": "cross-env WEBPACK_ANALYZER=1 webpack --config build/webpack.prod.js",
-    "build": "webpack --config build/webpack.prod.js",
-    "dev": "webpack-dev-server --config build/webpack.dev.js"
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.js"
   },
   "repository": {
     "type": "git",
@@ -29,17 +29,20 @@
     "colors": "^1.3.2",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
+    "cssnano": "^4.1.5",
     "express": "^4.16.3",
     "file-loader": "^2.0.0",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^4.4.0",
     "mini-css-extract-plugin": "^0.4.4",
     "postcss": "^7.0.5",
-    "postcss-cssnext": "^3.1.0",
     "postcss-import": "^12.0.0",
     "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.1.1",
     "speed-measure-webpack-plugin": "^1.2.3",
     "style-loader": "^0.23.0",
+    "sugarss": "^2.0.0",
     "url-loader": "^1.1.2",
     "webpack": "^4.20.0",
     "webpack-bundle-analyzer": "^3.0.3",
@@ -53,6 +56,18 @@
   "dependencies": {
     "lodash": "^4.17.11",
     "zepto-webpack": "^1.2.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-import": {},
+      "postcss-preset-env": {},
+      "cssnano": {}
+    }
   },
   "browserslist": [
     ">= 1%",
