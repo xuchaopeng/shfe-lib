@@ -60,7 +60,7 @@ const webpackConfig = {
         ]
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|woff|woff2)$/i,
+        test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
           {
             loader: 'url-loader',
@@ -68,7 +68,8 @@ const webpackConfig = {
               limit: 8192,
               name: IS_DEV ? '[path][name].[ext]' : 'img/[name].[hash:6].[ext]'
             }
-          }
+          },
+          'image-webpack-loader'
         ]
       },
       {
