@@ -1,10 +1,11 @@
-const isDev = process.env.NODE_ENV === 'development';
+const isPro = process.env.NODE_ENV === 'production';
+console.log(isPro);
 
 export const url = {
-  url1: isDev
-    ? 'https://testapi.eastday.com/url1'
-    : 'https://api.eastday.com/url1',
-  url2: isDev
-    ? 'https://testapi.eastday.com/url2'
-    : 'https://api.eastday.com/url2'
+  url1: isPro
+    ? 'https://api.eastday.com/url1'
+    : 'https://testapi.eastday.com/url1',
+  url2: isPro
+    ? 'https://api.eastday.com/url2'
+    : 'https://testapi.eastday.com/url2'
 };

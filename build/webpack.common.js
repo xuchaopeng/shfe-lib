@@ -1,27 +1,24 @@
 // const webpack = require('webpack');
 const path = require('path');
-const config = require('./config');
 // const DashboardPlugin = require('webpack-dashboard/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const IS_DEV = process.env.NODE_ENV === 'development';
-console.log('IS_DEV::', IS_DEV);
+// const IS_PRE = process.env.NODE_ENV === 'preproduction';
+// const cfg = IS_DEV ? config.dev : IS_PRE ? config.pre : config.build;
+const myresolve = p => {
+  return path.resolve(__dirname, p);
+};
 
 const webpackConfig = {
   entry: {
-    index: config.common.entry
+    index: myresolve('../src/js/index.js')
   },
   output: {
-    filename: path.posix.join(
-      config.common.assetsSubPath,
-      '/js/[name].[contenthash:6].js'
-    ),
-    chunkFilename: path.posix.join(
-      config.common.assetsSubPath,
-      '/js/[name].[contenthash:6].js'
-    ),
-    path: config.common.assetsRoot,
-    publicPath: config.common.assetsPublicPath
+    filename: 'js/[name].[contenthash:6].js',
+    chunkFilename: 'js/[name].[contenthash:6].js',
+    path: myresolve('../dist'),
+    publicPath: './'
   },
   optimization: {
     runtimeChunk: {
@@ -49,7 +46,14 @@ const webpackConfig = {
       {
         test: /\.s?css$/,
         use: [
-          IS_DEV ? 'style-loader' : MiniCssExtractPlugin.loader,
+          IS_DEV
+            ? 'style-loader'
+            : {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                  publicPath: '../'
+                }
+              },
           'css-loader',
           'postcss-loader',
           'sass-loader'
@@ -62,7 +66,7 @@ const webpackConfig = {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              name: IS_DEV ? '[path][name].[ext]' : '[hash].[ext]'
+              name: IS_DEV ? '[path][name].[ext]' : 'img/[name].[hash:6].[ext]'
             }
           }
         ]
@@ -79,12 +83,8 @@ const webpackConfig = {
       template: 'src/index.html'
     }),
     new MiniCssExtractPlugin({
-      filename:
-        config.common.assetsSubPath +
-        (IS_DEV ? '/css/[name].css' : '/css/[name].[contenthash:6].css'),
-      chunkFilename:
-        config.common.assetsSubPath +
-        (IS_DEV ? '/css/[id].css' : '/css/[id].[contenthash:6].css')
+      filename: IS_DEV ? 'css/[name].css' : 'css/[name].[contenthash:6].css',
+      chunkFilename: IS_DEV ? 'css/[id].css' : 'css/[name].[contenthash:6].css'
     })
     // new DashboardPlugin()
   ]

@@ -2,22 +2,19 @@ const path = require('path');
 const myresolve = p => {
   return path.resolve(__dirname, p);
 };
-
 module.exports = {
-  common: {
-    entry: myresolve('../src/js/index.js'),
-    assetsRoot: myresolve('../dist'),
-    assetsPublicPath: './',
-    assetsSubPath: 'static'
-  },
   dev: {
-    assetsRoot: myresolve('../dist'),
     assetsPublicPath: '/',
-    assetsSubPath: 'static'
+    autoOpenBrowser: false
+  },
+  pre: {
+    assetsRoot: myresolve('../pre'),
+    assetsPublicPath: './',
+    cssImgPath: '/'
   },
   build: {
     assetsRoot: myresolve('../dist'),
     assetsPublicPath: './',
-    assetsSubPath: 'static'
+    cssImgPath: '/'
   }
 };

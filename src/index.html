@@ -29,8 +29,30 @@
   <link rel="bookmark" href="//mini.eastday.com/toutiaoh5/img/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon-precomposed" href="//mini.eastday.com/toutiaoh5/img/favicon.ico">
   <title>SPA</title>
-  <!-- 约定按设计稿宽度伟750px计算，100px等于1rem -->
-  <script></script>
+  <script>
+    !(function (doc, win) {
+      var docEl = doc.documentElement;
+      var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+      var recalc = function () {
+        var clientWidth = docEl.clientWidth;
+        var MAX_WIDTH = 750;  // 设计稿宽度为750px，html设置字体大小100px，设计稿上30px相当于页面上0.3rem；
+        if (!clientWidth) {
+          return;
+        }
+        if (clientWidth >= MAX_WIDTH) {
+          docEl.style.fontSize = '100px';
+        } else {
+          docEl.style.fontSize = 100 * (clientWidth / MAX_WIDTH) + 'px';
+        }
+      };
+      recalc();
+      if (!doc.addEventListener) {
+        return;
+      }
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+  </script>
 </head>
 
 <body>
@@ -54,8 +76,7 @@
     <br>
 
     <h2 class="title">我下面2张图片</h2>
-    <p class="img"><img src="http://codeio.dftoutiao.com/RESEARCH/standard/raw/master/img/dog.jpg" alt=""></p>
-    <p class="img"><img src="./img/hjs.png" alt=""></p>
+    <p class="img"><img src="./img/dog.jpg" alt=""></p>
     <h2 class="title title-bgimg">我有1张背景图片</h2>
 
     <h2 class="title">我下面有1张小图片（会转成base64）</h2>

@@ -8,8 +8,13 @@ const $clickme = $('#clickme');
 const $txt = $('#txt');
 
 $clickme.on('click', function() {
-  $txt.hide();
-  print('txt is hidden!');
+  if ($txt.css('display') !== 'none') {
+    $txt.hide();
+    print('txt is hide!');
+  } else {
+    $txt.show();
+    print('txt is hide!');
+  }
 });
 
 const $input = $('#J_input');
