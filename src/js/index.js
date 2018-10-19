@@ -1,4 +1,4 @@
-import '../css/index.css';
+import '../css/index.scss';
 import $ from 'zepto-webpack';
 import { square, cube } from './math';
 import print from './print';
