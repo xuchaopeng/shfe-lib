@@ -1,5 +1,7 @@
 const isPro = process.env.NODE_ENV === 'production';
-console.log(isPro);
+console.log(process.env.NODE_ENV);
+console.log('isPro::', isPro);
+
 
 export const url = {
   url1: isPro

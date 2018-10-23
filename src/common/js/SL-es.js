@@ -799,17 +799,18 @@ var Util = {
 };
 
 var index = {
-  Array: Arr,
+  Arr,
   Browser,
   Cookie,
   DateTime,
   Html,
-  Number: Num,
+  Num,
   Os,
   PageVisibility,
-  String: Str,
+  Str,
   Url,
   Util
 };
 
 export default index;
+export { Arr, Browser, Cookie, DateTime, Html, Num, Os, PageVisibility, Str, Url, Util };

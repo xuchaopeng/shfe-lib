@@ -1,6 +1,6 @@
 import '../css/index.scss';
 import $ from 'zepto-webpack';
-import { square, cube } from './math';
+import { cube } from './math';
 import print from './print';
 import Api from '../api';
 
@@ -22,9 +22,9 @@ const $result = $('#J_result');
 const $square = $('#J_square');
 const $cube = $('#J_cube');
 
-$square.on('click', () => {
-  $result.text(square($input.val()));
-});
+// $square.on('click', () => {
+//   $result.text(square($input.val()));
+// });
 $cube.on('click', () => {
   $result.text(cube($input.val()));
 });

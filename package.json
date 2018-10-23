@@ -4,10 +4,10 @@
   "description": "webpack单页应用",
   "main": "src/index.js",
   "scripts": {
-    "builda": "cross-env WEBPACK_ANALYZER=1 webpack --config build/webpack.prod.js",
-    "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.js",
-    "pre": "cross-env NODE_ENV=preproduction webpack --config build/webpack.prod.js",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.js"
+    "builda": "cross-env WEBPACK_ANALYZER=1 webpack --config build/webpack.prod.js --colors --display-chunks --progress",
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.js --colors --display-chunks --progress",
+    "pre": "cross-env NODE_ENV=preproduction webpack --config build/webpack.prod.js --colors --progress",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.js --colors --display-chunks --progress"
   },
   "repository": {
     "type": "git",
@@ -40,13 +40,14 @@
     "postcss-import": "^12.0.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.1.1",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
     "url-loader": "^1.1.2",
     "webpack": "^4.20.0",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.1",
-    "webpack-dashboard": "^2.0.0",
     "webpack-dev-server": "^3.1.9",
     "webpack-merge": "^4.1.4"
   },
