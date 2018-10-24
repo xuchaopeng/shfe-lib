@@ -4,6 +4,7 @@ const glob = require('glob-all');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurifyCssPlugin = require('purifycss-webpack');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const IS_DEV = process.env.NODE_ENV === 'development'; // 开发
 const IS_PRE = process.env.NODE_ENV === 'preproduction'; // 上测试
 const IS_PRO = process.env.NODE_ENV === 'production'; // 上线
@@ -127,7 +128,8 @@ const webpackConfig = {
       DEVELOPMENT: JSON.stringify(IS_DEV),
       PREPRODUCTION: JSON.stringify(IS_PRE),
       PRODUCTION: JSON.stringify(IS_PRO)
-    })
+    }),
+    new FriendlyErrorsPlugin()
   ]
 };
 module.exports = webpackConfig;
