@@ -4,17 +4,17 @@ const myresolve = p => {
 };
 module.exports = {
   dev: {
+    port: 8888, // 默认8888
     assetsPublicPath: '/',
-    autoOpenBrowser: false
+    autoOpenBrowser: false,
+    errorOverlay: true
   },
   pre: {
     assetsRoot: myresolve('../pre'),
-    assetsPublicPath: './',
-    cssImgPath: '/'
+    assetsPublicPath: './'
   },
   build: {
     assetsRoot: myresolve('../dist'),
-    assetsPublicPath: './',
-    cssImgPath: '/'
+    assetsPublicPath: './'
   }
 };
