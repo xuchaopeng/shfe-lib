@@ -37,7 +37,6 @@ const devConfig = merge(commonConfig, {
     new FriendlyErrorsPlugin({
       compilationSuccessInfo: {
         messages: [
-          'You application is running here: ',
           `Local    ->  http://localhost:${config.dev.port || '8888'}/`,
           `Network  ->  http://${localIP}:${config.dev.port || '8888'}/`
         ]

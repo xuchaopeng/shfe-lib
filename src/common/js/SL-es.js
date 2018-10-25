@@ -308,7 +308,7 @@ var DateTime = {
    */
   timestampToTimestr: function(ts, hasHour) {
     var seconds = ts ? Number(ts) / 1000 : 0;
-    seconds = parseInt(seconds) % (60 * 60 * 24) + 8 * 60 * 60; //北京时间东八区加八个小时
+    seconds = (parseInt(seconds) % (60 * 60 * 24)) + 8 * 60 * 60; //北京时间东八区加八个小时
     return this.secondsToTimestr(seconds, hasHour);
   }
 };
@@ -813,4 +813,16 @@ var index = {
 };
 
 export default index;
-export { Arr, Browser, Cookie, DateTime, Html, Num, Os, PageVisibility, Str, Url, Util };
+export {
+  Arr,
+  Browser,
+  Cookie,
+  DateTime,
+  Html,
+  Num,
+  Os,
+  PageVisibility,
+  Str,
+  Url,
+  Util
+};

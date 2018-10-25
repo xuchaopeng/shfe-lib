@@ -41,9 +41,10 @@ const webpackConfig = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader' // 处理js新特性
-        }
+        use: [
+          'babel-loader', // 处理js新特性
+          'eslint-loader' // 代码格式校验
+        ]
       },
       {
         test: /\.s?css$/,
