@@ -1,20 +1,37 @@
 module.exports = {
+  root: true,
+  // 环境配置（根据实际情况做取舍）
   env: {
     browser: true,
+    node: true,
     commonjs: true,
-    es6: true
+    es6: true,
+    jquery: true
   },
-  extends: 'plugin:prettier/recommended',
+  globals: {
+    PRODUCTION: true,
+    PREPRODUCTION: true,
+    DEVELOPMENT: true
+  },
+  // 继承eslint的默认配置和prettier的配置。
+  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+  // 支持babel的使用
+  parser: 'babel-eslint',
   parserOptions: {
-    ecmaVersion: 2018,
+    // 支持es6模块语法
     sourceType: 'module'
   },
+  // 自定义规则（优先级最高）
   rules: {
     'prettier/prettier': [
       'error',
       {
-        singleQuote: true
+        singleQuote: true,
+        printWidth: 120,
+        tabWidth: 2,
+        semi: true
       }
-    ]
+    ],
+    'no-console': 'off'
   }
 };

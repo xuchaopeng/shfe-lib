@@ -51,17 +51,10 @@ var Browser = {
     if (agent.indexOf('firefox') > 0) {
       browserType = 'firefox';
     }
-    if (
-      agent.indexOf('chrome') > 0 &&
-      agent.indexOf('mb2345browser') < 0 &&
-      agent.indexOf('360 aphone browser') < 0
-    ) {
+    if (agent.indexOf('chrome') > 0 && agent.indexOf('mb2345browser') < 0 && agent.indexOf('360 aphone browser') < 0) {
       browserType = 'chrome';
     }
-    if (
-      agent.indexOf('360 aphone browser') > 0 ||
-      agent.indexOf('qhbrowser') > 0
-    ) {
+    if (agent.indexOf('360 aphone browser') > 0 || agent.indexOf('qhbrowser') > 0) {
       browserType = '360';
     }
     if (agent.indexOf('ucbrowser') > 0) {
@@ -70,10 +63,7 @@ var Browser = {
     if (agent.indexOf('micromessenger') > 0) {
       browserType = 'WeChat';
     }
-    if (
-      (agent.indexOf('mqqbrowser') > 0 || agent.indexOf('qq') > 0) &&
-      agent.indexOf('micromessenger') < 0
-    ) {
+    if ((agent.indexOf('mqqbrowser') > 0 || agent.indexOf('qq') > 0) && agent.indexOf('micromessenger') < 0) {
       browserType = 'QQ';
     }
     if (agent.indexOf('miuibrowser') > 0) {
@@ -118,22 +108,20 @@ var Cookie = {
    * @param expires 有效时间（单位：小时）（可选） 默认：24h
    */
   set(name, value, expires) {
-    const expTimes = expires
-      ? Number(expires) * 60 * 60 * 1000
-      : 24 * 60 * 60 * 1000; // 毫秒
+    const expTimes = expires ? Number(expires) * 60 * 60 * 1000 : 24 * 60 * 60 * 1000; // 毫秒
     const expDate = new Date();
     expDate.setTime(expDate.getTime() + expTimes);
-    const expString = '; expires=' + expDate.toUTCString();
+    const expString = `; expires=${expDate.toUTCString()}`;
     const pathString = '; path=/';
-    document.cookie = name + '=' + encodeURI(value) + expString + pathString;
+    document.cookie = `${name}=${encodeURI(value)}${expString}${pathString}`;
   },
   /**
    * 读cookie
    * @param name
    */
   get(name) {
-    const cookieStr = '; ' + document.cookie + '; ';
-    const index = cookieStr.indexOf('; ' + name + '=');
+    const cookieStr = `; ${document.cookie}; `;
+    const index = cookieStr.indexOf(`; ${name}=`);
     if (index !== -1) {
       let s = cookieStr.substring(index + name.length + 3, cookieStr.length);
       return decodeURI(s.substring(0, s.indexOf('; ')));
@@ -149,8 +137,7 @@ var Cookie = {
     const exp = new Date(new Date().getTime() - 1);
     const s = this.get(name);
     if (s !== null) {
-      document.cookie =
-        name + '=' + s + '; expires=' + exp.toUTCString() + '; path=/';
+      document.cookie = `${name}=${s}; expires=${exp.toUTCString()}; path=/`;
     }
   }
 };
@@ -199,12 +186,11 @@ var DateTime = {
       day = d.getDate().toString(),
       h = d.getHours().toString(),
       m = d.getMinutes().toString();
-    month = month.length > 1 ? month : '0' + month;
-    day = day.length > 1 ? day : '0' + day;
-    h = h.length > 1 ? h : '0' + h;
-    m = m.length > 1 ? m : '0' + m;
-    var str =
-      (withYear ? year + '-' : '') + month + '-' + day + ' ' + h + ':' + m; // MM-dd HH:mm
+    month = month.length > 1 ? month : `0${month}`;
+    day = day.length > 1 ? day : `0${day}`;
+    h = h.length > 1 ? h : `0${h}`;
+    m = m.length > 1 ? m : `0${m}`;
+    var str = `${(withYear ? `${year}-` : '') + month}-${day} ${h}:${m}`; // MM-dd HH:mm
     if (splitStr) {
       str = str.replace(/-/g, splitStr);
     }
@@ -252,9 +238,9 @@ var DateTime = {
       } else if (currentGetDate - targetGetDate === 0) {
         if (tdoa >= hourTime) {
           // 小时
-          return Math.floor(tdoa / hourTime) + '小时前';
+          return `${Math.floor(tdoa / hourTime)}小时前`;
         } else if (tdoa >= minuteTime) {
-          return Math.floor(tdoa / minuteTime) + '分钟前';
+          return `${Math.floor(tdoa / minuteTime)}分钟前`;
         } else {
           return '最新';
           // return Math.floor(tdoa / 1000) + '秒前';
@@ -283,22 +269,22 @@ var DateTime = {
     hh = parseInt(seconds / 3600) | 0;
     seconds = parseInt(seconds) - hh * 3600;
     if (hh < 10) {
-      hh = '0' + hh;
+      hh = `0${hh}`;
     }
     // 得到分
     mm = (seconds / 60) | 0;
     if (parseInt(mm) < 10) {
-      mm = '0' + mm;
+      mm = `0${mm}`;
     }
     // 得到秒
     ss = parseInt(seconds) - mm * 60;
     if (ss < 10) {
-      ss = '0' + ss;
+      ss = `0${ss}`;
     }
     if (hasHour) {
-      return hh + ':' + mm + ':' + ss;
+      return `${hh}:${mm}:${ss}`;
     }
-    return mm + ':' + ss;
+    return `${mm}:${ss}`;
   },
   /**
    * 时间戳转成时间字符串
@@ -421,8 +407,7 @@ var Html = {
     } catch (e) {
       console.error(e);
     }
-    scrollTop =
-      bodyScrollTop - documentScrollTop > 0 ? bodyScrollTop : documentScrollTop;
+    scrollTop = bodyScrollTop - documentScrollTop > 0 ? bodyScrollTop : documentScrollTop;
     return scrollTop;
   }
 };
@@ -439,21 +424,14 @@ var Num = {
     }
     num = parseInt(num, 10);
     if (num > 9999) {
-      return Math.ceil(num / 10000) + '万';
+      return `${Math.ceil(num / 10000)}万`;
     }
-    return '' + num;
+    return `${num}`;
   }
 };
 
 let u = navigator.userAgent,
-  Agents = new Array(
-    'Android',
-    'iPhone',
-    'SymbianOS',
-    'Windows Phone',
-    'iPad',
-    'iPod'
-  ),
+  Agents = new Array('Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod'),
   mobile = false;
 for (let v = 0; v < Agents.length; v++) {
   if (u.indexOf(Agents[v]) > -1) {
@@ -481,12 +459,12 @@ var Os = {
     if (/android/i.test(navigator.userAgent)) {
       index = agent.indexOf('android');
       version = agent.substr(index + 8, 3);
-      osType = 'Android ' + version;
+      osType = `Android ${version}`;
     }
     if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
       index = agent.indexOf('os');
       version = agent.substr(index + 3, 4);
-      osType = 'iOS ' + version;
+      osType = `iOS ${version}`;
     }
     if (
       /Linux/i.test(navigator.userAgent) &&
@@ -517,10 +495,7 @@ var isPageVisibilitySupport = (function() {
   var support = false;
   if (typeof window.screenX === 'number') {
     ['webkit', 'moz', 'ms', 'o', ''].forEach(function(prefix) {
-      if (
-        support === false &&
-        document[keyWithPrefix(prefix, 'hidden')] !== undefined
-      ) {
+      if (support === false && document[keyWithPrefix(prefix, 'hidden')] !== undefined) {
         prefixSupport = prefix;
         support = true;
       }
@@ -550,7 +525,7 @@ var PageVisibility = {
     usecapture = false;
     if (isPageVisibilitySupport && typeof fn === 'function') {
       return document.addEventListener(
-        prefixSupport + 'visibilitychange',
+        `${prefixSupport}visibilitychange`,
         function(evt) {
           this.hidden = isHidden();
           this.visibilityState = visibilityState();
@@ -693,7 +668,7 @@ var Url = {
             if (value === undefined) {
               return '';
             }
-            return encodeURI(key) + '=' + encodeURI(value);
+            return `${encodeURI(key)}=${encodeURI(value)}`;
           })
           .filter(x => x.length > 0)
           .join('&')
@@ -705,7 +680,7 @@ var Url = {
    * @return {string}      参数值，默认返回空字符串''
    */
   getQueryString(name) {
-    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    var reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
     var r = window.location.search.substr(1).match(reg);
     if (r != null) return decodeURI(r[2]);
     return '';
@@ -813,16 +788,4 @@ var index = {
 };
 
 export default index;
-export {
-  Arr,
-  Browser,
-  Cookie,
-  DateTime,
-  Html,
-  Num,
-  Os,
-  PageVisibility,
-  Str,
-  Url,
-  Util
-};
+export { Arr, Browser, Cookie, DateTime, Html, Num, Os, PageVisibility, Str, Url, Util };

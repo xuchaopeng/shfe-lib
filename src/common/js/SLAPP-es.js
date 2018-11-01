@@ -55,9 +55,9 @@ const PostMessage = (function() {
     m1: function(opt) {
       const _random = getRandom();
       // 成功回调方法名
-      const callbackName = 'dfttappcb' + _random;
+      const callbackName = `dfttappcb${_random}`;
       // 失败回调方法名
-      const failCallbackName = 'dfttappfcb' + _random;
+      const failCallbackName = `dfttappfcb${_random}`;
       // 协议回调函数key（可能不为默认的callback）
       let callbackKey = 'callback';
       // 协议失败回调函数key（可能不为默认的callback）
@@ -103,9 +103,9 @@ const PostMessage = (function() {
     m2: function(opt) {
       const _random = getRandom();
       // 成功回调方法名
-      const callbackName = 'dfttappcb' + _random;
+      const callbackName = `dfttappcb${_random}`;
       // 失败回调方法名
-      const failCallbackName = 'dfttappfcb' + _random;
+      const failCallbackName = `dfttappfcb${_random}`;
       // 协议回调函数key（可能不为默认的callback）
       let callbackKey = 'callback';
       // 协议失败回调函数key（可能不为默认的callback）
@@ -151,9 +151,9 @@ const PostMessage = (function() {
     m3: function(opt) {
       const _random = getRandom();
       // 成功回调方法名
-      const callbackName = 'dfttappcb' + _random;
+      const callbackName = `dfttappcb${_random}`;
       // 失败回调方法名
-      const failCallbackName = 'dfttappfcb' + _random;
+      const failCallbackName = `dfttappfcb${_random}`;
       // 协议回调函数key（可能不为默认的callback）
       let callbackKey = 'callback';
       // 协议失败回调函数key（可能不为默认的callback）
@@ -249,7 +249,7 @@ const JsAction = (function() {
     var iframe = document.createElement('iframe');
     iframe.style.display = 'none';
     iframe.style.visibility = 'hidden';
-    iframe.src = 'js-m-action://' + funcName;
+    iframe.src = `js-m-action://${funcName}`;
     document.body.appendChild(iframe);
   }
   return {
@@ -300,14 +300,7 @@ const JsAction = (function() {
        * @param {string} machine 当前应用所在机型
        * @param {string} plantform 当前应用所在操作系统
        */
-      window.setClientInfo = function(
-        version,
-        oem,
-        qid,
-        imei,
-        machine,
-        plantform
-      ) {
+      window.setClientInfo = function(version, oem, qid, imei, machine, plantform) {
         cb({
           version,
           oem,
@@ -344,7 +337,7 @@ const JsAction = (function() {
       callapp('goback');
     },
     pushimgToClient: function(opt) {
-      init_pushimg_info(opt);
+      init_pushimg_info(opt); // eslint-disable-line
       callapp('pushimgToClient');
     },
     goToViewLogin: function() {
