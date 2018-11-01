@@ -4,8 +4,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const commonConfig = require('./webpack.common');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const hasAnalyzer = process.env.WEBPACK_ANALYZER === '1';
 const IS_PRE = process.env.NODE_ENV === 'preproduction';
 const cfg = IS_PRE ? config.pre : config.build;
