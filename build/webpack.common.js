@@ -14,13 +14,19 @@ const myresolve = p => {
 
 const webpackConfig = {
   entry: {
-    index: myresolve('../src/js/index.js')
+    index: myresolve('../src/pages/index/index.js')
   },
   output: {
     filename: 'js/[name].[contenthash:6].js',
     chunkFilename: 'js/[name].[contenthash:6].js',
     path: myresolve('../dist'),
     publicPath: './'
+  },
+  resolve: {
+    alias: {
+      '@common': path.resolve(__dirname, '../src/common'),
+      '@api': path.resolve(__dirname, '../src/api')
+    }
   },
   optimization: {
     runtimeChunk: {
@@ -85,7 +91,7 @@ const webpackConfig = {
     // html依赖注入
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'src/index.html',
+      template: path.resolve(__dirname, '../src/pages/index/index.html'),
       minify: IS_DEV
         ? null
         : {
@@ -109,10 +115,7 @@ const webpackConfig = {
     // css tree-shaking
     new PurifyCssPlugin({
       minimize: true,
-      paths: glob.sync([
-        path.join(__dirname, '../src/index.html'),
-        path.join(__dirname, '../src/js/*.js')
-      ])
+      paths: glob.sync([path.join(__dirname, '../src/pages/*.html'), path.join(__dirname, '../src/pages/**/*.js')])
     }),
     new webpack.DefinePlugin({
       DEVELOPMENT: JSON.stringify(IS_DEV),

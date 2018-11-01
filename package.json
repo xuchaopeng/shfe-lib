@@ -1,8 +1,8 @@
 {
   "name": "webpack-study",
   "version": "0.0.1",
-  "description": "webpack单页应用",
-  "main": "src/index.js",
+  "description": "webpack多页应用",
+  "main": "src/pages/index/index.js",
   "scripts": {
     "builda": "cross-env WEBPACK_ANALYZER=1 NODE_ENV=production webpack --config build/webpack.prod.js --colors --progress",
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.js --colors --progress",

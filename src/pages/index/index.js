@@ -1,8 +1,8 @@
-import '../css/index.scss';
+import './index.scss';
 import $ from 'zepto-webpack';
-import { cube, square } from './math';
-import print from './print';
-import Api from '../api';
+import { cube, square } from './js/math';
+import print from './js/print';
+import Api from '@api';
 
 const $clickme = $('#clickme');
 const $txt = $('#txt');
