@@ -1,16 +1,6 @@
-
 # SPA
 
-基于 webpack 的单页面应用框架
-
-## 特点
-
-- 支持代码合并压缩
-- 业务代码和公共代码、webpack 运行时代码分离（最大化的利用浏览器缓存）
-- 开发、预发布、上线环境分离
-- 支持使用 es6（babel）、支持 sass
-- 支持热更新、tree-shaking、autoprefixer、图片 base64 等
-- 支持 eslint 代码校验、prettier 代码风格
+基于 webpack4 的单页面应用框架
 
 ## 使用说明
 
