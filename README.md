@@ -13,8 +13,8 @@
 
 ## SPA
 
-单页面 CLI 请切换分支到`spa`：`git checkout -b spa origin/spa`，点击跳转到分支：[spa](./)
+单页面 CLI 请切换分支到`spa`：`git checkout -b spa origin/spa`
 
 ## MPA
 
-多页面 CLI 请切换分支到`mpa`：`git checkout -b mpa origin/mpa`，点击跳转到分支：[mpa](./)
+多页面 CLI 请切换分支到`mpa`：`git checkout -b mpa origin/mpa`
