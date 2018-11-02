@@ -24,9 +24,7 @@ const devConfig = merge(commonConfig, {
     open: config.dev.autoOpenBrowser,
     publicPath: config.dev.assetsPublicPath,
     quiet: true, // necessary for FriendlyErrorsPlugin
-    overlay: config.dev.errorOverlay
-      ? { warnings: false, errors: true }
-      : false,
+    overlay: config.dev.errorOverlay ? { warnings: false, errors: true } : false,
     // proxy: config.dev.proxyTable,
     watchOptions: {
       poll: true

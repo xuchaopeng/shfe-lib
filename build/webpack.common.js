@@ -5,6 +5,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurifyCssPlugin = require('purifycss-webpack');
 
+const MIN_HTML_OPTS = {
+  removeComments: true,
+  collapseWhitespace: true,
+  removeRedundantAttributes: true,
+  useShortDoctype: true,
+  removeEmptyAttributes: true,
+  removeStyleLinkTypeAttributes: true,
+  keepClosingSlash: true,
+  minifyJS: true,
+  minifyCSS: true,
+  minifyURLs: true
+};
 const IS_DEV = process.env.NODE_ENV === 'development'; // 开发
 const IS_PRE = process.env.NODE_ENV === 'preproduction'; // 上测试
 const IS_PRO = process.env.NODE_ENV === 'production'; // 上线
@@ -14,7 +26,9 @@ const myresolve = p => {
 
 const webpackConfig = {
   entry: {
-    index: myresolve('../src/pages/index/index.js')
+    index: myresolve('../src/pages/index/index.js'),
+    about: myresolve('../src/pages/about/about.js'),
+    contact: myresolve('../src/pages/contact/contact.js')
   },
   output: {
     filename: 'js/[name].[contenthash:6].js',
@@ -90,22 +104,22 @@ const webpackConfig = {
   plugins: [
     // html依赖注入
     new HtmlWebpackPlugin({
+      chunks: ['index', 'vendor', 'manifest'],
       filename: 'index.html',
       template: path.resolve(__dirname, '../src/pages/index/index.html'),
-      minify: IS_DEV
-        ? null
-        : {
-            removeComments: true,
-            collapseWhitespace: true,
-            removeRedundantAttributes: true,
-            useShortDoctype: true,
-            removeEmptyAttributes: true,
-            removeStyleLinkTypeAttributes: true,
-            keepClosingSlash: true,
-            minifyJS: true,
-            minifyCSS: true,
-            minifyURLs: true
-          }
+      minify: IS_DEV ? null : MIN_HTML_OPTS
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['about', 'vendor', 'manifest'],
+      filename: 'about.html',
+      template: path.resolve(__dirname, '../src/pages/about/about.html'),
+      minify: IS_DEV ? null : MIN_HTML_OPTS
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['contact', 'vendor', 'manifest'],
+      filename: 'contact.html',
+      template: path.resolve(__dirname, '../src/pages/contact/contact.html'),
+      minify: IS_DEV ? null : MIN_HTML_OPTS
     }),
     // css提取
     new MiniCssExtractPlugin({
