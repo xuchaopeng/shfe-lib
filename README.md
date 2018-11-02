@@ -1,20 +1,59 @@
-# 简易 CLI
+# MPA
 
-针对公司业务使用`webpack4.x`和`babel7.x`整理的一个主要针对 H5 页面开发的脚手架，如果 PC 项目对 IE 兼容要求不高，也可以使用。
+基于 webpack 的多页面应用框架（**未完成**）
 
-## 特点
+## 使用说明
 
-- 支持代码合并压缩、图片压缩、图片 base64、autoprefixer、代码版本控制；
-- 支持 es6、sass；
-- 支持热更新、tree-shaking 等；
-- 支持 eslint 代码校验、prettier 代码风格；
-- 支持业务代码和公共代码、webpack 运行时代码分离（最大化的利用浏览器缓存）；
-- 支持开发、预发布、上线环境分离。
+```bash
+# 开发
+npm run dev # 或 npm start
 
-## SPA
+# 预发布（用于上测试服）打包
+npm run pre
 
-单页面 CLI 请切换分支到`spa`：`git checkout -b spa origin/spa`
+# 上线打包
+npm run build
+# 上线打包可视化分析
+npm run builda
 
-## MPA
+# 代码格式校验
+npm run lint
 
-多页面 CLI 请切换分支到`mpa`：`git checkout -b mpa origin/mpa`
+# 代码格式自动修复
+npm run fix
+```
+
+## 目录结构说明
+
+```bash
+.
+├── .eslintrc.js  # eslint配置文件
+├── .prettierrc.js  # prettier配置文件
+├── build # webpack配置文件目录
+│   ├── config.js
+│   ├── webpack.common.js
+│   ├── webpack.dev.js
+│   └── webpack.prod.js
+├── dist # 上线打包目录
+├── pre # 预发布打包目录
+└── src # 源码目录
+    ├── api # 接口处理目录（代码组织方式供参考）
+    │   ├── config.js
+    │   ├── data.js
+    │   ├── index.js
+    │   └── log.js
+    ├── common  # 公共目录
+    │   ├── css
+    │   │   ├── _base.scss
+    │   │   ├── _common.scss
+    │   │   ├── _index.scss
+    │   │   └── _mixin.scss
+    │   └── js
+    │       ├── SL-es.js
+    │       ├── SLAPP-es.js
+    │       └── responsive.js
+```
+
+## 贡献
+
+如发现有 bug 或有更好的 idea，欢迎提 PR。
