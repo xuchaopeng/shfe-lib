@@ -1,8 +1,11 @@
-import '../css/index.scss';
+// 添加样式依赖
+import '@/common/css/index.scss';
+import '@/css/index.scss';
+// 添加js依赖
 import $ from 'zepto-webpack';
 import { cube, square } from './math';
 import print from './print';
-import Api from '../api';
+import Api from '@/api';
 
 const $clickme = $('#clickme');
 const $txt = $('#txt');

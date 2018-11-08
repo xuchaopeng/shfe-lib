@@ -1,4 +1,4 @@
-import SL, { Arr, Browser } from '@common/js/SL-es';
+import SL, { Arr, Browser } from '@/common/js/SL-es';
 
 const testTS = () => {
   console.log(SL);

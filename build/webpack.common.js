@@ -25,19 +25,18 @@ const webpackConfig = {
   resolve: {
     alias: {
       '@nm': path.resolve(__dirname, '../node_modules'),
-      '@common': path.resolve(__dirname, '../src/common'),
-      '@api': path.resolve(__dirname, '../src/api')
+      '@': path.resolve(__dirname, '../src')
     }
   },
   optimization: {
     runtimeChunk: {
-      name: 'manifest' // webpack运行时文件
+      name: 'runtime' // webpack运行时文件
     },
     splitChunks: {
       cacheGroups: {
-        vendor: {
+        common: {
           test: /[\\/]node_modules[\\/]|[\\/]src[\\/]common[\\/]/, // 将node_modules和src/common下的js打包到一个chunk
-          name: 'vendor',
+          name: 'common',
           chunks: 'all'
         }
       }
