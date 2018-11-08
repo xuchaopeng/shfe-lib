@@ -23,6 +23,12 @@ npm run lint
 npm run fix
 ```
 
+**注意：代码构建过程中 webpack 会注入三个全局变量（原则上只要使用 PRODUCTION 即可）**
+
+- PRODUCTION: true 表示上线环境
+- DEVELOPMENT: true 表示开发环境
+- PREPRODUCTION: true 表示预发布环境
+
 ## 目录结构说明
 
 ```bash
