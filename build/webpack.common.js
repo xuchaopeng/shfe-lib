@@ -22,6 +22,13 @@ const webpackConfig = {
     path: myresolve('../dist'),
     publicPath: './'
   },
+  resolve: {
+    alias: {
+      '@nm': path.resolve(__dirname, '../node_modules'),
+      '@common': path.resolve(__dirname, '../src/common'),
+      '@api': path.resolve(__dirname, '../src/api')
+    }
+  },
   optimization: {
     runtimeChunk: {
       name: 'manifest' // webpack运行时文件
@@ -109,10 +116,7 @@ const webpackConfig = {
     // css tree-shaking
     new PurifyCssPlugin({
       minimize: true,
-      paths: glob.sync([
-        path.join(__dirname, '../src/index.html'),
-        path.join(__dirname, '../src/js/*.js')
-      ])
+      paths: glob.sync([path.join(__dirname, '../src/index.html'), path.join(__dirname, '../src/js/*.js')])
     }),
     new webpack.DefinePlugin({
       DEVELOPMENT: JSON.stringify(IS_DEV),
