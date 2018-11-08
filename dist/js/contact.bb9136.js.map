@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/pages/contact/js/other.js"],"names":["console","log"],"mappings":"mIACEA,QAAQC,IAAI","file":"js/contact.bb9136.js","sourcesContent":["export function log() {\n  console.log('contact other.js log...');\n}\n"],"sourceRoot":""}

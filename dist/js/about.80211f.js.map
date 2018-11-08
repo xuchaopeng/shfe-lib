@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/pages/about/js/other.js"],"names":["console","log"],"mappings":"uIACEA,QAAQC,IAAI","file":"js/about.80211f.js","sourcesContent":["export function log() {\n  console.log('about other.js log...');\n}\n"],"sourceRoot":""}

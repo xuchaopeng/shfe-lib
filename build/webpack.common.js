@@ -23,7 +23,6 @@ const IS_PRO = process.env.NODE_ENV === 'production'; // 上线
 const myresolve = p => {
   return path.resolve(__dirname, p);
 };
-
 const webpackConfig = {
   entry: utils.getEntry,
   output: {
@@ -34,19 +33,20 @@ const webpackConfig = {
   },
   resolve: {
     alias: {
+      '@': path.resolve(__dirname, '../src'),
       '@common': path.resolve(__dirname, '../src/common'),
       '@api': path.resolve(__dirname, '../src/api')
     }
   },
   optimization: {
     runtimeChunk: {
-      name: 'manifest' // webpack运行时文件
+      name: 'runtime' // webpack运行时文件
     },
     splitChunks: {
       cacheGroups: {
-        vendor: {
+        common: {
           test: /[\\/]node_modules[\\/]|[\\/]src[\\/]common[\\/]/, // 将node_modules和src/common下的js打包到一个chunk
-          name: 'vendor',
+          name: 'common',
           chunks: 'all'
         }
       }
@@ -106,7 +106,7 @@ const webpackConfig = {
     // css tree-shaking
     new PurifyCssPlugin({
       minimize: true,
-      paths: glob.sync([path.join(__dirname, '../src/pages/*.html'), path.join(__dirname, '../src/pages/**/*.js')])
+      paths: glob.sync([path.join(__dirname, '../src/pages/**/*.html'), path.join(__dirname, '../src/pages/**/*.js')])
     }),
     new webpack.DefinePlugin({
       DEVELOPMENT: JSON.stringify(IS_DEV),
@@ -120,7 +120,7 @@ const tpls = utils.getTpl();
 for (const chunk in tpls) {
   webpackConfig.plugins.unshift(
     new HtmlWebpackPlugin({
-      chunks: [chunk, 'vendor', 'manifest'],
+      chunks: [chunk, 'common', 'runtime'],
       filename: `${chunk}.html`,
       template: tpls[chunk],
       minify: IS_DEV ? null : MIN_HTML_OPTS
