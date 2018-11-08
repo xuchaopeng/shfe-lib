@@ -33,9 +33,8 @@ const webpackConfig = {
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '../src'),
-      '@common': path.resolve(__dirname, '../src/common'),
-      '@api': path.resolve(__dirname, '../src/api')
+      '@nm': path.resolve(__dirname, '../node_modules'),
+      '@': path.resolve(__dirname, '../src')
     }
   },
   optimization: {
