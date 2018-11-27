@@ -6,7 +6,7 @@ module.exports = {
   dev: {
     port: 8888, // 默认8888
     assetsPublicPath: '/',
-    autoOpenBrowser: true, // 是否自动打开浏览器
+    autoOpenBrowser: false, // 是否自动打开浏览器
     errorOverlay: true // 编译出错时，是否在浏览器端遮罩显示错误信息。
   },
   pre: {
