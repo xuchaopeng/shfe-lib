@@ -6,7 +6,7 @@ const internalIp = require('internal-ip');
 const localIP = internalIp.v4.sync();
 const merge = require('webpack-merge');
 const commonConfig = require('./webpack.common');
-const PORT = '8888' || config.dev.port;
+const PORT = config.dev.port || '8888';
 const devConfig = merge(commonConfig, {
   mode: 'development',
   output: {
@@ -18,15 +18,14 @@ const devConfig = merge(commonConfig, {
   devServer: {
     contentBase: config.dev.assetsRoot,
     clientLogLevel: 'warning',
+    host: '0.0.0.0',
     hot: true,
     compress: true,
     port: PORT,
     open: config.dev.autoOpenBrowser,
     publicPath: config.dev.assetsPublicPath,
     quiet: true, // necessary for FriendlyErrorsPlugin
-    overlay: config.dev.errorOverlay
-      ? { warnings: false, errors: true }
-      : false,
+    overlay: config.dev.errorOverlay ? { warnings: false, errors: true } : false,
     // proxy: config.dev.proxyTable,
     watchOptions: {
       poll: true
@@ -37,8 +36,8 @@ const devConfig = merge(commonConfig, {
     new FriendlyErrorsPlugin({
       compilationSuccessInfo: {
         messages: [
-          `Local    ->  http://localhost:${config.dev.port || '8888'}/`,
-          `Network  ->  http://${localIP}:${config.dev.port || '8888'}/`
+          `Local    ->  http://localhost:${PORT}/`,
+          `Network  ->  http://${localIP}:${PORT}/`
         ]
       },
       onErrors: (severity, errors) => {
