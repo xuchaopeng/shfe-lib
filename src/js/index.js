@@ -6,10 +6,13 @@ import $ from 'zepto-webpack';
 import { cube, square } from './math';
 import print from './print';
 import Api from '@/api';
+import defaults from 'lodash/defaults';
+
+console.log(defaults({ a: 1 }, { a: 3, b: 2 }));
 
 const $clickme = $('#clickme');
 const $txt = $('#txt');
-$clickme.addClass('test');
+// $clickme.addClass('test');
 $clickme.on('click', function() {
   if ($txt.css('display') !== 'none') {
     $txt.hide();
