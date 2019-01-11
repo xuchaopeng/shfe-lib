@@ -69,12 +69,12 @@ const webpackConfig = {
         ]
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         use: [
           {
             loader: 'url-loader', // 处理css图片引用
             options: {
-              limit: 8192,
+              limit: 10000,
               name: IS_DEV ? '[path][name].[ext]' : 'img/[name].[hash:6].[ext]' // 图片文件名
             }
           },
@@ -82,8 +82,27 @@ const webpackConfig = {
         ]
       },
       {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: IS_DEV ? '[path][name].[ext]' : 'media/[name].[hash:6].[ext]' // 媒体资源文件名
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: IS_DEV ? '[path][name].[ext]' : 'fonts/[name].[hash:6].[ext]' // 字体文件名
+        }
+      },
+      {
         test: /\.html$/,
-        use: 'html-loader' // 处理html图片引用
+        loader: 'html-loader', // 处理html中资源引用
+        options: {
+          attrs: ['img:src', 'video:poster', 'video:src', 'audio:src', 'source:src']
+        }
       }
     ]
   },
