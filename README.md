@@ -46,6 +46,7 @@ npm run fix
 │   └── webpack.prod.js
 ├── dist # 上线打包目录
 ├── pre # 预发布打包目录
+├── static # 资源目录（有些公共资源不方便通过js引入，直接通过html引入的时候，可以放到这个目录（如 shareinstall），目录结构参考打包后目录结构）
 └── src
     ├── api # 公共接口、日志处理目录（代码组织方式供参考）
     │   ├── config.js
