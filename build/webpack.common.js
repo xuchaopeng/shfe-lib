@@ -4,6 +4,7 @@ const glob = require('glob-all');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurifyCssPlugin = require('purifycss-webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const utils = require('./utils');
 const MIN_HTML_OPTS = {
   removeComments: true,
@@ -130,7 +131,15 @@ const webpackConfig = {
       DEVELOPMENT: JSON.stringify(IS_DEV),
       PREPRODUCTION: JSON.stringify(IS_PRE),
       PRODUCTION: JSON.stringify(IS_PRO)
-    })
+    }),
+    // 针对库文件且不支持ESM、CommonJS规范的直接通过html引入的文件进行复制到打包目录的操作。
+    new CopyWebpackPlugin([
+      {
+        from: myresolve('../static'),
+        to: '',
+        ignore: ['.*']
+      }
+    ])
   ]
 };
 
