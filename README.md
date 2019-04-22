@@ -1,4 +1,4 @@
-# 嵩恒前端 CLI
+# 移动端 CLI
 
 针对公司业务使用`webpack4.x`和`babel7.x`整理的一个主要针对 H5 页面开发的脚手架，如果 PC 项目对 IE 兼容要求不高，也可以使用。
 
@@ -15,7 +15,7 @@
 
 ```bash
 # 将项目clone下来
-git clone http://codeio.dftoutiao.com/RESEARCH/shfe-cli.git my-project
+git clone https://github.com/xuchaopeng/shfe-lib.git my-project
 cd my-project
 
 # 切换到对应的脚手架分支
@@ -38,12 +38,12 @@ git push -u origin master
 
 ### SPA
 
-单页面 CLI 请切换分支到`spa`，点击查看：[SPA](http://codeio.dftoutiao.com/RESEARCH/shfe-cli/src/spa)
+单页面 CLI 请切换分支到`spa`，点击查看：[SPA](http://github.com/xuchaopeng/shfe-cli/src/spa)
 
 ### MPA
 
-多页面 CLI 请切换分支到`mpa`，点击查看：[MPA](http://codeio.dftoutiao.com/RESEARCH/shfe-cli/src/mpa)
+多页面 CLI 请切换分支到`mpa`，点击查看：[MPA](http://github.com/xuchaopeng/shfe-cli/src/mpa)
 
 ## 问题反馈
 
-[提工单（issue）](http://codeio.dftoutiao.com/RESEARCH/shfe-cli/issues/new) 或 [提合并请求（PR）](http://codeio.dftoutiao.com/RESEARCH/shfe-cli/pulls)
+[提工单（issue）](http://github.com/xuchaopeng/shfe-cli/issues/new) 或 [提合并请求（PR）](http://github.com/xuchaopeng/shfe-cli/pulls)
